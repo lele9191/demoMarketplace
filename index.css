@@ -1,0 +1,29 @@
+.emailInput {
+    width: 200px;
+}
+
+.passwordInput {
+    width: 200px;
+}
+
+.containerAll {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form {
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.successLabel {
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    font-size: medium;
+    color: #4a90e2
+}
