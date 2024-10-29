@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
     <script defer src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
-    <script> 
-      $(function(){
-        $("#header").load("/componenti/header.html"); 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.11.7/shaka-player.compiled.js"
+      integrity="sha512-fmiHBzNo52pqNO56n+b+qZ2kgq5q06/UZYy9l4f7OTRhIcFbQjVSUr8kq7JMiPUx43C0+pEUl9v2d+a+FSRiNA=="
+      crossorigin="use-credentials"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.11.7/controls.min.css"
+      integrity="sha512-HIBi8y3s/eA8pJRxsEcXOlmxq6FfhZ+CWq4Md52N91X6jPpB3qbZyCq8LlN/vwNFkh9YaCiGE2fCEVqxVsCmgQ=="
+      crossorigin="use-credentials"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      $(function () {
+        $("#header").load("/componenti/header.html");
       });
-      </script> 
+    </script>
     <title>VIDEO</title>
-    <link rel="stylesheet" href= "../../styles.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
     <header>
-        <div id="header"></div>
-      </header>
-     <h1  style="margin: 0;"><div class="osteocomTitle" id="video-name"></div></h1> 
+      <div id="header"></div>
+    </header>
+    <h1 style="margin: 0"><div class="osteocomTitle" id="video-name"></div></h1>
+    <video id="video" width="640" controls autoplay></video>
     <script src="video.js"></script>
-</body>
-</html> 
+    <script src="shakaPlayer.js"></script>
+  </body>
+</html>

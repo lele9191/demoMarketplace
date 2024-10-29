@@ -107,9 +107,9 @@
     max-height: 62px;
     text-overflow: ellipsis;
     overflow: hidden;
-    display: -webkit-box;
     -webkit-box-orient: vertical;
     color: #fff;
+    text-wrap: nowrap;
 }
 .card-title-section-video {
     line-height: 19px;
@@ -140,6 +140,11 @@
     max-width: 100%;
     box-sizing: border-box;
     justify-content: flex-start;
+}
+
+video {
+    display: flex;
+    margin: 50px auto;
 }
 
 .authorInnerSpan {

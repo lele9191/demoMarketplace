@@ -35,59 +35,8 @@
     <header>
       <div id="header"></div>
     </header>
-    <script>
-      // document.addEventListener("DOMContentLoaded", async function () {
-      //   event.preventDefault();
-      //   //todo purchase
-      //   const urlVideo = "http://localhost:5000/sv6/marketplace_videoAccess";
-      //   const accessToken = JSON.parse(sessionStorage.getItem("token"));
-      //   const clientId = "psiGBHLDxz9nQ2xzudIyDw";
-
-      //   const videoResponse = await fetch(urlVideo, {
-      //     method: "POST",
-      //     headers: {
-      //       Authorization: `Bearer ${accessToken}`,
-      //     },
-      //     body: JSON.stringify({
-      //       email: "null",
-      //       channelId: "null",
-      //       videoId: "637269083976f3fb6724756d",
-      //       clientId: "null",
-      //       userAccessKey: "null",
-      //     }),
-      //   });
-      //   if (!videoResponse.ok) {
-      //     throw new Error("Errore durante la chiamata per la purchase");
-      //   }
-
-      //   const tokenHls = await videoResponse.json();
-      //   console.log("tokenUser ", tokenHls);
-      // });
-    </script>
-    <!-- <video
-      id="my-video"
-      class="video-js"
-      controls
-      preload="auto"
-      width="640"
-      height="264"
-      data-setup="{}"
-    >
-      <source
-        src="https://video.osteocom.me/hls/6294a1039113000d33f118fb/6294a1039113000d33f118fb.m3u8"
-      />
-      </p> 
-    </video> -->
-    <video
-      id="video"
-      width="640"
-      controls
-      autoplay
-    ></video>
-
     <div class="osteocomTitle"><h1>Videolessons</h1></div>
     <div id="videos-container-cards" class="videos-container-cards"></div>
-    <!-- <script src="videos.js"></script> -->
-    <script src="shaskaPlayer.js"></script>
+    <script src="videos.js"></script>
   </body>
 </html>

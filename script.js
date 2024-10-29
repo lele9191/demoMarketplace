@@ -2,12 +2,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const clientId = "psiGBHLDxz9nQ2xzudIyDw";
 
   try {
-    console.log("ottengo catalogo...");
-
-    // const authData = await authResponse.json();
-    // const accessToken = authData.token;
-    // var accessToken = JSON.parse(sessionStorage.getItem("token"));
-    // Chiamata API catalogo
     var catalogDataStorage;
     if (sessionStorage.getItem("catalog") === null) {
       const catalogUrl = "http://localhost:5000/sv6/marketplace_catalog";
@@ -25,23 +19,29 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
 
       const catalogData = await catalogResponse.json();
+      catalogDataStorage = catalogData;
 
-      catalogDataStorage = sessionStorage.setItem(
-        "catalog",
-        JSON.stringify(catalogData)
-      );
+      sessionStorage.setItem("catalog", JSON.stringify(catalogDataStorage));
 
-      console.log("session storage", catalogDataStorage);
-      console.log("session storage", catalogData);
+      catalogData.catalog.forEach((channelObject) => {
+        var videos = channelObject.idChannel ? channelObject.video : [];
+        sessionStorage.setItem(
+          `videos_${channelObject.idChannel}`,
+          JSON.stringify(videos)
+        );
+      });
+    } else {
+      catalogDataStorage = JSON.parse(sessionStorage.getItem("catalog"));
     }
 
-    catalogDataStorage = JSON.parse(sessionStorage.getItem("catalog"));
-
-    // Mostra il catalogo
     const channelContainer = document.getElementById("channel-container-cards");
 
     if (channelContainer) {
+      channelContainer.innerHTML = "";
+
       catalogDataStorage.catalog.forEach((channel) => {
+        console.log(channel);
+
         const cardContainer = document.createElement("div");
         const cardInnerTop = document.createElement("div");
         const cardInnerBottom = document.createElement("div");
@@ -82,7 +82,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         priceLabelText.textContent = "Price ";
         const purchaseButton = document.createElement("button");
         purchaseButton.classList.add("purchaseButton");
-        purchaseButton.setAttribute("id","purchase-button");
+        purchaseButton.setAttribute(
+          "id",
+          `purchase-button-${channel.idChannel}`
+        );
         purchaseButton.textContent = "Buy";
         infoPriceContainer.append(priceLabelText, priceLabel);
 
@@ -97,39 +100,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         cardContainer.append(cardInnerTop, cardInnerBottom);
 
         cardInnerTop.addEventListener("click", function () {
-          const videosForChannel = getVideosByChannel(channel.idChannel);
-          sessionStorage.setItem("videos", JSON.stringify(videosForChannel));
+          event.preventDefault();
           window.location.href = `/prodotti/osteocom/videos.html?channelId=${channel.idChannel}`;
         });
 
-        purchaseButton.addEventListener("click", ApiPurchase);
+        purchaseButton.addEventListener("click", () => {
+          ApiPurchase(channel.idChannel);
+        });
 
         channelContainer.appendChild(cardContainer);
       });
-    }
-
-    // const channelContainer = document.getElementById("channels");
-    // if (channelContainer) {
-    //   catalogDataStorage.catalog.forEach((channel) => {
-    //     const title = channel.translations.it.title;
-    //     const card = document.createElement("div");
-    //     card.className = "card";
-    //     card.innerHTML = `<h2>${title}</h2>`;
-    //     card.addEventListener("click", function () {
-    //       //Filtro i video e salvo in sessione
-    //       const videosForChannel = getVideosByChannel(channel.idChannel);
-    //       sessionStorage.setItem("videos", JSON.stringify(videosForChannel));
-    //       window.location.href = `/prodotti/osteocom/videos.html?channelId=${channel.idChannel}`;
-    //     });
-    //     channelContainer.appendChild(card);
-    //   });
-    // }
-    function getVideosByChannel(channelId) {
-      var videos = catalogDataStorage.catalog.find(
-        (x) => x.idChannel === channelId
-      ).video;
-      console.log(videos);
-      return videos;
     }
   } catch (error) {
     console.error("Errore:", error);

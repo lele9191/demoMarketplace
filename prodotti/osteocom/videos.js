@@ -1,18 +1,19 @@
 document.addEventListener("DOMContentLoaded", async function () {
   // Recupera i video dal session storage
-
-  const videos = JSON.parse(sessionStorage.getItem("videos"));
+  const params = new URLSearchParams(window.location.search);
+  const channelId = params.get("channelId");
+  
+  const videos = JSON.parse(sessionStorage.getItem(`videos_${channelId}`));
   console.log("i video", videos);
 
   if (videos) {
-    // disegno la card
+
     const videoContainer = document.getElementById("videos-container-cards");
+    videoContainer.innerHTML = ''; 
 
     if (videoContainer) {
-      var count = 0;
+
       videos.forEach((video) => {
-        console.log(count++) 
-         
         const cardContainer = document.createElement("div");
         const cardInnerTop = document.createElement("div");
         const cardInnerBottom = document.createElement("div");
@@ -41,68 +42,25 @@ document.addEventListener("DOMContentLoaded", async function () {
         authorInnerSpanName.classList.add("authorInnerSpanName");
         authorLabelContainer.append(authorInnerSpan, authorInnerSpanName);
 
-        const videoQulitySection = document.createElement("span");
-        videoQulitySection.textContent = video.videoQuality;
-        videoQulitySection.classList.add("priceLabel");
+        const videoQualitySection = document.createElement("span");
+        videoQualitySection.textContent = video.videoQuality;
+        videoQualitySection.classList.add("priceLabel");
 
         cardInnerBottom.append(
           titleSection,
           authorLabelContainer,
-          videoQulitySection
+          videoQualitySection
         );
         cardContainer.append(cardInnerTop, cardInnerBottom);
 
-        videoContainer.appendChild(cardContainer)
+        videoContainer.appendChild(cardContainer);
 
-        // todo funzione che rimanda al video con dati video
-
-        cardInnerTop.addEventListener("click", function () { 
-          event.preventDefault() 
-          window.location.href = `/prodotti/osteocom/video.html?videoId=${video.videoId}`;
-        })
+        cardInnerTop.addEventListener("click", function () {
+          event.preventDefault();
+          window.location.href = `/prodotti/osteocom/video.html?channelId=${channelId}&videoId=${video.videoId}`;
+        });
       });
     }
-
-    //todo servirà dopo per accesso al video nella nuova pagina singleVideo.js
-    //todo risposta negativa allora trailer
-    // try {
-    //   const urlVideo = "http://localhost:5000/sv6/marketplace_videoAccess";
-    //   const accessToken = JSON.parse(sessionStorage.getItem("token"));
-    //   const clientId = "psiGBHLDxz9nQ2xzudIyDw";
-    //   const userAccessKey =  JSON.parse(sessionStorage.getItem("tokenAccessKey"));
-
-    //   const videoResponse = await fetch(urlVideo, {
-    //     method: "POST",
-    //     headers: {
-    //       Authorization: `Bearer ${accessToken}`,
-    //     },
-    //     body: JSON.stringify({
-    //       email: "leonardo.calvo@osteocom.me",
-    //       channelId: "59147ece8c81b92db0a7162f",
-    //       videoId: "637269083976f3fb6724756d",
-    //       clientId: clientId,
-    //       userAccessKey: userAccessKey,
-    //     }),
-    //   })
-    //   if (!videoResponse.ok) {
-    //     throw new Error("Errore durante la chiamata video");
-    //   }
-
-    //   const tokenHls = await videoResponse.json();
-    //   console.log("tokenUser ", tokenHls);
-    // }
-
-    // catch (error) {
-    //   console.log(error)
-    // }
-
-    // const videoContainer = document.getElementById('video-container');
-    // videos.forEach(video => {
-    //   const videoCard = document.createElement('div');
-    //   videoCard.className = 'cardVideo';
-    //   videoCard.innerHTML = `<h3>${video.translations.it.title}</h3>`;
-    //   videoContainer.appendChild(videoCard);
-    // });
   } else {
     console.error("Nessun video trovato per questo canale.");
   }

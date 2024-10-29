@@ -1,4 +1,4 @@
-async function ApiPurchase() {
+async function ApiPurchase(channelId) {
   event.preventDefault();
   //todo purchase
   const urlPurchase = "http://localhost:5000/sv6/marketplace_purchase";
@@ -7,9 +7,10 @@ async function ApiPurchase() {
   
   var spinner = document.createElement("i");
   spinner.classList.add("fa", "fa-spinner", "fa-spin");
-  var purchaseButton = document.getElementById("purchase-button")
-  purchaseButton.innerHTML = " process..."
-  purchaseButton.prepend(spinner);
+  var purchaseButton = document.getElementById(`purchase-button-${channelId}`)
+    purchaseButton.innerHTML = " process..."
+    purchaseButton.prepend(spinner);
+  
 
   const purchaseResponse = await fetch(urlPurchase, {
     method: "POST",
@@ -27,8 +28,9 @@ async function ApiPurchase() {
     }),
   });
   
-   spinner.remove()
+    spinner.remove()
     purchaseButton.innerHTML = "Purchase complete!"
+  
 
   if (!purchaseResponse.ok) {
     throw new Error("Errore durante la chiamata per la purchase");
