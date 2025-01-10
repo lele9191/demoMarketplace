@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Chiamata API pear l'utenticazione
 
   const authUrl = "http://localhost:5000/sv6/marketplace_login";
-  const clientId = "psiGBHLDxz9nQ2xzudIyDw";
-  const secretKey = "QAtSD8r88kuzqWdjDNbJwuiBJ2DK98fPtz1YESrz2JU";
+  const clientId = "zvA1ShscqRx0333BpgaA";
+  const secretKey = "DS79NcmoQe9k6G8PygMbrcOzrvKlYUzkq5IUmDVdcmI";
 
   try {
     console.log("autentico il partner...");

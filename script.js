@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  const clientId = "psiGBHLDxz9nQ2xzudIyDw";
+  // const clientId = "psiGBHLDxz9nQ2xzudIyDw"; [PROD]
+
+  //[TEST]
+  const clientId = "zvA1ShscqRx0333BpgaA";
 
   try {
     var catalogDataStorage;

@@ -30,14 +30,34 @@
     </script>
     <title>VIDEO</title>
     <link rel="stylesheet" href="../../styles.css" />
+
+    <!-- *Uncomment this part if you want to use jwplayer videoplayer -->
+    <!-- <script src=" https://cdn.jwplayer.com/libraries/h1ScXuAj.js"></script> -->
+
   </head>
   <body>
     <header>
       <div id="header"></div>
     </header>
     <h1 style="margin: 0"><div class="osteocomTitle" id="video-name"></div></h1>
-    <video id="video" width="640" controls autoplay></video>
-    <script src="video.js"></script>
-    <script src="shakaPlayer.js"></script>
+    <!-- *Uncomment this part if you want to use shakaplayer, a player for the client -->
+    <!-- <video id="video" width="640" controls autoplay></video> -->
+    <div id="myElement">This text will be replaced with a player.</div>
+     <!--* Uncomment this part if you want to use jwplayer videoplayer -->
+    <!-- <script>
+        jwplayer("myElement").setup({
+            "file": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+        });
+    </script> -->
+      <iframe id="videoFrame" style="display: none;" src="http://localhost:5000/en/videoaccess?email=leonardo.calvo@osteocom.me&channelId=66d579675f2ea4b71f15e4d3&clientId=psiGBHLDxz9nQ2xzudIyDw&userAccessKey=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW9uYXJkby5jYWx2b0Bvc3Rlb2NvbS5tZSIsImlhdCI6MTcyNzc2NjAwMCwiZXhwIjowLCJzaWQiOiJwYXJ0IiwiaWRjIjoicHNpR0JITER4ejluUTJ4enVkSXlEdyIsInJ1YyI6InBhcnRuZXIifQ.392lNaiu3pb28lEdHkRCtGyUf-OpMkNrq8733_DYxCk&videoId=591441ce8c81b91cc4f8d653" frameborder="0" width="800px", height="600px"></iframe>
+     <script>
+      const iframe = document.getElementById('videoFrame');
+      iframe.addEventListener('load', () => {
+        iframe.style.display = 'block';
+      });
+    </script> 
+    <!--* Uncomment these parts of scripts if you want to use shakaplayer, a player for the client -->
+    <!-- <script src="video.js"></script> -->
+    <!-- <script src="shakaPlayer.js"></script> -->
   </body>
 </html>

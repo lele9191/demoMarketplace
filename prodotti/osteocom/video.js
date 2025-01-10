@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     console.log("userAccessKey ", userAccessKey);
 
-    // Effettua la chiamata all'API
+    // Call to the video access API
     const videoResponse = await fetch(urlVideoApi, {
       method: "POST",
       headers: {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       body: JSON.stringify({
         email: "leonardo.calvo@osteocom.me",
         channelId: "66d579675f2ea4b71f15e4d3",
-        videoId: video.videoId,
+        videoId: "591441ce8c81b91cc4f8d653",
         clientId: clientId,
         userAccessKey: userAccessKey == undefined ? "ND" : userAccessKey,
       }),
@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       return;
     }
 
-    // Converte la risposta JSON
+    // Converts the JSON response
     const responseJson = await videoResponse.json();
     console.log("signedUrl: ", responseJson.signedURL);
 
-    // Inizializza il player con l'URL firmato
+    // Initialize player with the signed url
     initAppPlayer(responseJson.signedURL);
 
   } catch (error) {
