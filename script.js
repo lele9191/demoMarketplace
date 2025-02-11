@@ -1,17 +1,24 @@
+import { urlPrefix } from "./conf.js";
+import { ApiPurchase } from "./purchase.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
   // const clientId = "psiGBHLDxz9nQ2xzudIyDw"; [PROD]
 
   //[TEST]
-  const clientId = "zvA1ShscqRx0333BpgaA";
+  const clientId = "JJHiuDTDATCmpm3UkGILg";
+  //[TEST OMNIPRESS]
+  // const clientId = "qUfrD3y52Tk8K9TVb9drhQ";
+
 
   try {
     var catalogDataStorage;
     if (sessionStorage.getItem("catalog") === null) {
-      const catalogUrl = "http://localhost:5000/sv6/marketplace_catalog";
+      const catalogUrl =`${urlPrefix()}` + "contentLicensing_catalog";
       const accessToken = JSON.parse(sessionStorage.getItem("token"));
       const catalogResponse = await fetch(catalogUrl, {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({ clientId: clientId }),
@@ -61,7 +68,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const titleSection = document.createElement("p");
         titleSection.classList.add("card-title-section");
-        titleSection.textContent = channel.translations.it.title;
+        titleSection.textContent = channel.title;
 
         const authorLabelContainer = document.createElement("div");
         authorLabelContainer.classList.add("authorLabelContainer");

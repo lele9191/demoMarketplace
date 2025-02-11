@@ -12,16 +12,12 @@
     <script defer src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.11.7/shaka-player.compiled.js"
-      integrity="sha512-fmiHBzNo52pqNO56n+b+qZ2kgq5q06/UZYy9l4f7OTRhIcFbQjVSUr8kq7JMiPUx43C0+pEUl9v2d+a+FSRiNA=="
-      crossorigin="use-credentials"
-      referrerpolicy="no-referrer"
+
     ></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.11.7/controls.min.css"
-      integrity="sha512-HIBi8y3s/eA8pJRxsEcXOlmxq6FfhZ+CWq4Md52N91X6jPpB3qbZyCq8LlN/vwNFkh9YaCiGE2fCEVqxVsCmgQ=="
-      crossorigin="use-credentials"
-      referrerpolicy="no-referrer"
+
     />
     <script>
       $(function () {
@@ -49,13 +45,19 @@
             "file": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
         });
     </script> -->
-      <iframe id="videoFrame" style="display: none;" src="http://localhost:5000/en/videoaccess?email=leonardo.calvo@osteocom.me&channelId=66d579675f2ea4b71f15e4d3&clientId=psiGBHLDxz9nQ2xzudIyDw&userAccessKey=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW9uYXJkby5jYWx2b0Bvc3Rlb2NvbS5tZSIsImlhdCI6MTcyNzc2NjAwMCwiZXhwIjowLCJzaWQiOiJwYXJ0IiwiaWRjIjoicHNpR0JITER4ejluUTJ4enVkSXlEdyIsInJ1YyI6InBhcnRuZXIifQ.392lNaiu3pb28lEdHkRCtGyUf-OpMkNrq8733_DYxCk&videoId=591441ce8c81b91cc4f8d653" frameborder="0" width="800px", height="600px"></iframe>
-     <script>
+      <!--todo old frame -->
+      <!-- <iframe id="videoFrame" style="display: none;" src= "http://localhost:5000/en/videoaccess?email=leonardo.calvo@osteocom.me&channelId=6790d4362d61c994a8e7333d&clientId=qUfrD3y52Tk8K9TVb9drhQ&userAccessKey=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW9uYXJkby5jYWx2b0Bvc3Rlb2NvbS5tZSIsImlhdCI6MTcyNzc2NjAwMCwiZXhwIjowLCJzaWQiOiJwYXJ0IiwiaWRjIjoicVVmckQzeTUyVGs4SzlUVmI5ZHJoUSIsInJ1YyI6InBhcnRuZXIifQ.ILXaWxYkw1vRyGJbXtN8LKq_83Lxs2ZIfTM5d06vfAE&videoId=6790d792e700709e4b5d2b87" frameborder="0" width="800px", height="600px"></iframe> -->
+      <!-- todo changed with page videaccess2 -->
+      <!-- <iframe id="videoFrame" style="display: none;" src= "http://localhost:5000/en/videoaccess?signature=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWRjIjoicVVmckQzeTUyVGs4SzlUVmI5ZHJoUSIsInJ1YyI6InBhcnRuZXIiLCJpYXQiOjE3MzkxOTIzMDEsInNpZCI6InBhcnQiLCJleHAiOjAsImlkdSI6bnVsbH0.9wCIWS4MQeQINqhvy-VyEliVA_vMf2A7jr9kWwn41HE", frameborder="0" width="800px", height="600px"></iframe> -->
+      <iframe id="videoFrame" frameborder="0" width="800px", height="600px"></iframe>      
+      <!--todo old frame part -->
+      <!-- <script>
       const iframe = document.getElementById('videoFrame');
       iframe.addEventListener('load', () => {
         iframe.style.display = 'block';
       });
-    </script> 
+    </script>    -->
+    <script type="module" src="./videoNewFrame.js" ></script>
     <!--* Uncomment these parts of scripts if you want to use shakaplayer, a player for the client -->
     <!-- <script src="video.js"></script> -->
     <!-- <script src="shakaPlayer.js"></script> -->

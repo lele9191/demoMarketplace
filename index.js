@@ -1,9 +1,15 @@
-document.addEventListener("DOMContentLoaded", async function () {
-  // Chiamata API pear l'utenticazione
+import { urlPrefix } from "./conf.js";
 
-  const authUrl = "http://localhost:5000/sv6/marketplace_login";
-  const clientId = "zvA1ShscqRx0333BpgaA";
-  const secretKey = "DS79NcmoQe9k6G8PygMbrcOzrvKlYUzkq5IUmDVdcmI";
+document.addEventListener("DOMContentLoaded", async function () {
+  // Chiamata API per l'utenticazione
+
+  const authUrl = `${urlPrefix()}` + "contentLicensing_login";
+  const clientId = "JJHiuDTDATCmpm3UkGILg";
+  const secretKey = "PZPPgCDM3NQCO3ata8LA2PFUM6ewUWtc6Kyu5eRwa0";
+
+  // omnipress
+  // const clientId = "qUfrD3y52Tk8K9TVb9drhQ";
+  // const secretKey = "ymGp9z2Ml2OaHn6Yjx4gsI5PdQ3P0zIyVTwgHY4EE";
 
   try {
     console.log("autentico il partner...");
@@ -18,13 +24,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (!authResponse.ok) {
       throw new Error("Errore durante l'autenticazione");
     }
-    console.log("autenticazione ok")
-    var resToJson = await authResponse.json()
+    console.log("autenticazione ok");
+    var resToJson = await authResponse.json();
 
-    var newAccesToken = resToJson
+    var newAccesToken = resToJson;
 
     sessionStorage.setItem("token", JSON.stringify(newAccesToken.token));
-    console.log("new Access Token ",newAccesToken.token)
+    console.log("new Access Token ", newAccesToken.token);
   } catch (error) {
     console.error("Errore:", error);
   }

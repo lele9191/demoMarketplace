@@ -1,3 +1,4 @@
+import { urlPrefix } from "./conf.js";
 document.addEventListener("DOMContentLoaded", async function () {
   TitlePage();
 
@@ -5,10 +6,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const video = VideoInfo();
     console.log("video ", video);
 
-    const urlVideoApi = "http://localhost:5000/sv6/marketplace_videoAccess";
+    const urlVideoApi = `${urlPrefix()}` + "contentLicensing_videoAccess";
     const accessToken = JSON.parse(sessionStorage.getItem("token"));
     console.log("accessToken ", accessToken);
-    const clientId = "psiGBHLDxz9nQ2xzudIyDw";
+    const clientId = "JJHiuDTDATCmpm3UkGILg";
     const userAccessKey = sessionStorage.getItem("tokenAccessKey");
 
     console.log("userAccessKey ", userAccessKey);
@@ -23,7 +24,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       body: JSON.stringify({
         email: "leonardo.calvo@osteocom.me",
         channelId: "66d579675f2ea4b71f15e4d3",
-        videoId: "591441ce8c81b91cc4f8d653",
         clientId: clientId,
         userAccessKey: userAccessKey == undefined ? "ND" : userAccessKey,
       }),

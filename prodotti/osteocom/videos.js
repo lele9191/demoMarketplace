@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const titleSection = document.createElement("p");
         titleSection.classList.add("card-title-section-video");
-        titleSection.textContent = video.translations.it.title;
+        titleSection.textContent = video.title;
 
         const authorLabelContainer = document.createElement("div");
         authorLabelContainer.classList.add("authorLabelContainer");

@@ -1,10 +1,13 @@
-const express = require('express');
-var cors = require('cors')
-const path = require('path');
-const app = express();
-const PORT = 8000;
+import cors from "cors";
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 
+const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(cors())
+const PORT = 8000;
 // Servire file statici dalla cartella 'public'
 app.use(express.static(path.join(__dirname, ''), {extensions: ['html']}));
 
@@ -16,8 +19,6 @@ app.get('/', cors(), (req, res) => {
 app.get('/prodotti/osteocom',cors(), (req, res) => {
     res.sendFile(path.join(__dirname, 'prodotti', 'osteocom', 'osteocom.html'));
 });
-
-
 
 // Avvia il server
 app.listen(PORT, () => {
