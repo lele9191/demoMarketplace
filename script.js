@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // const clientId = "psiGBHLDxz9nQ2xzudIyDw"; [PROD]
 
   //[TEST]
-  const clientId = "JJHiuDTDATCmpm3UkGILg";
+  const clientId = "psiGBHLDxz9nQ2xzudIyDw";
   //[TEST OMNIPRESS]
   // const clientId = "qUfrD3y52Tk8K9TVb9drhQ";
 
