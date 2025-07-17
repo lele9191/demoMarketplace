@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jwplayer.com/libraries/h1ScXuAj.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myElement"></div>
+
+    <script type="text/JavaScript">
+            let player = jwplayer("myElement");
+            let language = 'fr'
+            player.setup({
+                // "file": "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8",
+                "file": "https://d12l7tabix202x.cloudfront.net/hls/63779c52eb148740d10cc18f/63779c52eb148740d10cc18f.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMTJsN3RhYml4MjAyeC5jbG91ZGZyb250Lm5ldC9obHMvNjM3NzljNTJlYjE0ODc0MGQxMGNjMThmLyoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTE2MzYzNjN9fX1dfQ__&Signature=iViRlwALDiAHnSt6JNiCVJmupxu07FGKNdAzwDEqrTFYcEjFyaGdn93JOWah2u~L71L5d27RQciiE2NblnoO9hEAwnD0J41hKc71HTkcFG0P~Xr9uBjgvvk1wxY7QEOujwd7BcWnP6tecCdgWMO4DN5sHdlJDNSvaIfsQsPQm4M5OThid4v89W~VsE5mDimhpP4~joWjDk5lAp7Gt~zR2dnCinIp8ZJc4eCHd0xUiqkHMVjCrIakJET02T3aSf7rmWOpGF29aFfwTYPHORpzSSqUAXBxacOOgYK9cGNNI4or3af8evgFlGvYnduFWufgKjz9hB2PHW6Jx13-vWGX6w__&Key-Pair-Id=APKAJLEJYAS4O3RJU35A",
+            });
+
+            player.on("captionsList", function (event) {
+                console.log(language)
+                let trackLang = event.tracks.filter((track) => track.language == language)[0]
+                console.log(trackLang)
+                if (trackLang != undefined) {
+                    let indexLang = event.tracks.indexOf(trackLang)
+                    player.setCurrentCaptions(indexLang)
+                }
+
+        console.log(event.tracks);
+
+      });
+    </script>
+  </body>
+</html>
