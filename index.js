@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Chiamata API per l'utenticazione
   document.documentElement.requestFullscreen();
   const authUrl = `${urlPrefix()}` + "contentLicensing_login";
-  const clientId = "psiGBHLDxz9nQ2xzudIyDw";
-  const secretKey = "QAtSD8r88kuzqWdjDNbJwuiBJ2DK98fPtz1YESrz2JU";
+  const clientId = "JJHiuDTDATCmpm3UkGILg";
+  const secretKey = "PZPPgCDM3NQCO3ata8LA2PFUM6ewUWtc6Kyu5eRwa0";
 
   // omnipress
   // const clientId = "qUfrD3y52Tk8K9TVb9drhQ";
